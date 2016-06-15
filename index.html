@@ -143,7 +143,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/IntelljJ-IDEA/" style="font-size: 10px;">IntelljJ IDEA</a>
+                        <a href="/tags/IntelliJ-IDEA/" style="font-size: 20px;">IntelliJ IDEA</a> <a href="/tags/Tomcat-JDBC/" style="font-size: 10px;">Tomcat JDBC</a>
                     </div>
                 </section>
                 
@@ -225,6 +225,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="[layout]-Tomcat的JDBC连接池" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/08/Tomcat的JDBC连接池/" class="article-date">
+      <time datetime="2016-06-08T06:04:22.000Z" itemprop="datePublished">2016-06-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/08/Tomcat的JDBC连接池/">Tomcat的JDBC连接池</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>JDBC 连接池</strong> org.apache.tomcat.jdbc.pool 是 <a href="http://commons.apache.org/proper/commons-dbcp">Apache Commons DBCP</a> 连接池的一种替换或备选方案。  </p>
+<h4 id="那究竟为何需要一个新的连接池？"><a href="#那究竟为何需要一个新的连接池？" class="headerlink" title="那究竟为何需要一个新的连接池？"></a>那究竟为何需要一个新的连接池？</h4><ol>
+<li>Commons DBCP 1.x 是单线程。为了线程安全，在对象分配或对象返回的短期内，Commons 锁定了全部池。但注意这并不适用于 Commons DBCP 2.x。  </li>
+<li>Commons DBCP 1.x 可能会变得很慢。当逻辑 CPU 数目增长，或者试图借出或归还对象的并发线程增加时，性能就会受到影响。高并发系统受到的影响会更为显著。注意这并不适用于 Commons DBCP 2.x。<br><Excerpt in index | 首页摘要>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat-JDBC/">Tomcat JDBC</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/08/Tomcat的JDBC连接池/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="[layout]-生成serialVersionUID的方法" class="article article-type-[layout]" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -252,22 +321,29 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>默认情况下Intellij IDEA是关闭了继承了java.io.Serializable的类生成serialVersionUID的警告。如果需要ide提示生成serialVersionUID，那么需要做以下设置：</p>
-<p>1、setting-&gt;Inspections-&gt;Serialization issues，将serialzable class without “serialVersionUID”打上勾；</p>
-<p>2、将光标放到类名上，按atl＋enter键，就会提示生成serialVersionUID了。</p>
-
+              <p>默认情况下Intellij IDEA是关闭了继承了java.io.Serializable的类生成serialVersionUID的警告。如果需要ide提示生成serialVersionUID，那么需要做以下设置：</p>
+<p><Excerpt in index | 首页摘要><br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+    </div>
+
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntelljJ-IDEA/">IntelljJ IDEA</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/08/生成serialVersionUID的方法/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -312,27 +388,30 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>IntelljJ IDEA默认没有提示，但是可以通过如下设置完成：</p>
-<p>Settings -&gt; Editor -&gt; General -&gt; Editor Tabs: Check “Mark modified tabs with asterisk”<br><img src="/2016/06/08/文件修改提示和自动保存功能/a.png" alt="a.png" title=""></p>
-<p>IntelljJ IDEA关于文件自动保存功能主要有两种方式：</p>
-<ul>
-<li>切换到其他应用时保存变化（默认使能）<br>设置路径：Settings -&gt; Apperance &amp; Behavior -&gt; Save files on frame deactivation</li>
-<li>如果应用空闲则自动保存变化（默认禁止）<br>设置路径：Settings -&gt; Apperance &amp; Behavior -&gt; Save files automatically if application is idle for … sec.</li>
-</ul>
-<img src="/2016/06/08/文件修改提示和自动保存功能/b.png" alt="b.png" title="">
-
+              <p>IntelliJ IDEA默认没有提示，但是可以通过如下设置完成：</p>
+<p>Settings -&gt; Editor -&gt; General -&gt; Editor Tabs: Check “Mark modified tabs with asterisk”</p>
+<p><Excerpt in index | 首页摘要><br>
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+    </div>
+
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntelljJ-IDEA/">IntelljJ IDEA</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/08/文件修改提示和自动保存功能/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
