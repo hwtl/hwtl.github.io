@@ -252,7 +252,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>JDBC 连接池</strong> org.apache.tomcat.jdbc.pool 是 <a href="http://commons.apache.org/proper/commons-dbcp">Apache Commons DBCP</a> 连接池的一种替换或备选方案。  </p>
+              <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>JDBC 连接池</strong> <code>org.apache.tomcat.jdbc.pool</code> 是 <a href="http://commons.apache.org/proper/commons-dbcp">Apache Commons DBCP</a><br>连接池的一种替换或备选方案。  </p>
 <h4 id="那究竟为何需要一个新的连接池？"><a href="#那究竟为何需要一个新的连接池？" class="headerlink" title="那究竟为何需要一个新的连接池？"></a>那究竟为何需要一个新的连接池？</h4><ol>
 <li>Commons DBCP 1.x 是单线程。为了线程安全，在对象分配或对象返回的短期内，Commons 锁定了全部池。但注意这并不适用于 Commons DBCP 2.x。  </li>
 <li>Commons DBCP 1.x 可能会变得很慢。当逻辑 CPU 数目增长，或者试图借出或归还对象的并发线程增加时，性能就会受到影响。高并发系统受到的影响会更为显著。注意这并不适用于 Commons DBCP 2.x。<br><Excerpt in index | 首页摘要>
