@@ -145,7 +145,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/IntelliJ-IDEA/" style="font-size: 20px;">IntelliJ IDEA</a> <a href="/tags/Maven/" style="font-size: 20px;">Maven</a> <a href="/tags/Tomcat-JDBC/" style="font-size: 10px;">Tomcat JDBC</a>
+                        <a href="/tags/IntelliJ-IDEA/" style="font-size: 20px;">IntelliJ IDEA</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Maven/" style="font-size: 20px;">Maven</a> <a href="/tags/Tomcat-JDBC/" style="font-size: 10px;">Tomcat JDBC</a>
                     </div>
                 </section>
                 
@@ -228,6 +228,77 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Linux中查找命令总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/01/Linux中查找命令总结/" class="article-date">
+      <time datetime="2016-07-01T07:33:20.000Z" itemprop="datePublished">2016-07-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/01/Linux中查找命令总结/">Linux中查找命令总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="一-find"><a href="#一-find" class="headerlink" title="一 find"></a>一 find</h3><p>find是最常使用和最强大的查找命令，可以找到任何想查找到的文件<br>用法如下：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果不加参数，默认搜索当前目录及子目录，并且不过滤任何结果（也就是返回所有文件）<br>实例：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> /home -name 'a*'</span><br></pre></td></tr></table></figure></p>
+<p>搜索home 目录（含子目录）中所有文件名以a开头的文件<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> /home -name 'a*' -ls</span><br></pre></td></tr></table></figure></p>
+<p>搜索home目录（含子目录）中所有文件名以a开头的文件并显示它们的详细信息。<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> /home -<span class="built_in">type</span> f -mmin -<span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>搜索home目录中所有过去10分钟中更新过的普通文件，如果不加-type f 参数，则搜索普通文件+特殊文件+目录</p>
+<p><Excerpt in index | 首页摘要><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/01/Linux中查找命令总结/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Maven常用命令" class="article article-type-post" itemscope itemprop="blogPost">
   

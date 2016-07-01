@@ -3,18 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>生成serialVersionUID的方法 | Jerry&#39;s blog</title>
+  <title>Linux中查找命令总结 | Jerry&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="默认情况下Intellij IDEA是关闭了继承了java.io.Serializable的类生成serialVersionUID的警告。如果需要ide提示生成serialVersionUID，那么需要做以下设置：">
+  <meta name="description" content="一 findfind是最常使用和最强大的查找命令，可以找到任何想查找到的文件用法如下：1$ find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt;
+如果不加参数，默认搜索当前目录及子目录，并且不过滤任何结果（也就是返回所有文件）实例：1$ find /home -name &apos;a*&apos;
+搜索home 目录（含子目录）中所有文件名以a开头的文件1$ find /home">
 <meta property="og:type" content="article">
-<meta property="og:title" content="生成serialVersionUID的方法">
-<meta property="og:url" content="http://xiaoweige.info/2016/06/08/生成serialVersionUID的方法/index.html">
+<meta property="og:title" content="Linux中查找命令总结">
+<meta property="og:url" content="http://xiaoweige.info/2016/07/01/Linux中查找命令总结/index.html">
 <meta property="og:site_name" content="Jerry's blog">
-<meta property="og:description" content="默认情况下Intellij IDEA是关闭了继承了java.io.Serializable的类生成serialVersionUID的警告。如果需要ide提示生成serialVersionUID，那么需要做以下设置：">
-<meta property="og:updated_time" content="2016-06-15T07:31:07.000Z">
+<meta property="og:description" content="一 findfind是最常使用和最强大的查找命令，可以找到任何想查找到的文件用法如下：1$ find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt;
+如果不加参数，默认搜索当前目录及子目录，并且不过滤任何结果（也就是返回所有文件）实例：1$ find /home -name &apos;a*&apos;
+搜索home 目录（含子目录）中所有文件名以a开头的文件1$ find /home">
+<meta property="og:updated_time" content="2016-07-01T07:53:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="生成serialVersionUID的方法">
-<meta name="twitter:description" content="默认情况下Intellij IDEA是关闭了继承了java.io.Serializable的类生成serialVersionUID的警告。如果需要ide提示生成serialVersionUID，那么需要做以下设置：">
+<meta name="twitter:title" content="Linux中查找命令总结">
+<meta name="twitter:description" content="一 findfind是最常使用和最强大的查找命令，可以找到任何想查找到的文件用法如下：1$ find &amp;lt;指定目录&amp;gt; &amp;lt;指定条件&amp;gt; &amp;lt;指定动作&amp;gt;
+如果不加参数，默认搜索当前目录及子目录，并且不过滤任何结果（也就是返回所有文件）实例：1$ find /home -name &apos;a*&apos;
+搜索home 目录（含子目录）中所有文件名以a开头的文件1$ find /home">
   
     <link rel="alternative" href="/atom.xml" title="Jerry&#39;s blog" type="application/atom+xml">
   
@@ -225,11 +231,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="[layout]-生成serialVersionUID的方法" class="article article-type-[layout]" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Linux中查找命令总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/08/生成serialVersionUID的方法/" class="article-date">
-      <time datetime="2016-06-08T05:51:00.000Z" itemprop="datePublished">2016-06-08</time>
+      <a href="/2016/07/01/Linux中查找命令总结/" class="article-date">
+      <time datetime="2016-07-01T07:33:20.000Z" itemprop="datePublished">2016-07-01</time>
 </a>
     </div>
   
@@ -242,7 +248,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      生成serialVersionUID的方法
+      Linux中查找命令总结
     </h1>
   
 
@@ -257,7 +263,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -267,10 +273,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>默认情况下Intellij IDEA是关闭了继承了java.io.Serializable的类生成serialVersionUID的警告。如果需要ide提示生成serialVersionUID，那么需要做以下设置：</p>
-<p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""><br>1、setting-&gt;Inspections-&gt;Serialization issues，将serialzable class without “serialVersionUID”打上勾；</the></p>
-<p>2、将光标放到类名上，按atl＋enter键，就会提示生成serialVersionUID了。</p>
+        <h3 id="一-find"><a href="#一-find" class="headerlink" title="一 find"></a>一 find</h3><p>find是最常使用和最强大的查找命令，可以找到任何想查找到的文件<br>用法如下：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果不加参数，默认搜索当前目录及子目录，并且不过滤任何结果（也就是返回所有文件）<br>实例：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> /home -name 'a*'</span><br></pre></td></tr></table></figure></p>
+<p>搜索home 目录（含子目录）中所有文件名以a开头的文件<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> /home -name 'a*' -ls</span><br></pre></td></tr></table></figure></p>
+<p>搜索home目录（含子目录）中所有文件名以a开头的文件并显示它们的详细信息。<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> /home -<span class="built_in">type</span> f -mmin -<span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<p>搜索home目录中所有过去10分钟中更新过的普通文件，如果不加-type f 参数，则搜索普通文件+特殊文件+目录</p>
+<p><excerpt in="" index="" |="" 首页摘要=""><br>    <a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><p>locate 命令实质上是 <code>find -name</code> 的另外一种写法，但是要比后者快得多，原因在于它不搜索具体目录，而是搜索一个数据库（<code>/var/lib/locatedb</code>）,这个数据库中含有本地所有文件信息。Linux系统自动创建这个数据库，并且每天自动更新一次，所以使用locate命令查不到最新变动过的文件。为了避免这种情况，可以在使用locate之前，先使用updatedb命令，手动更新数据库。<br>实例：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ locate /etc/sh</span><br></pre></td></tr></table></figure></p>
+<p>搜索etc 目录下所有以sh开头的文件<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ locate ~/m</span><br></pre></td></tr></table></figure></p>
+<p>搜索home 目录下，所有以m开头的文件<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ locate -i ~/m</span><br></pre></td></tr></table></figure></p>
+<p>搜索用户主目录下，所有以m开头的文件，并且忽略大小写</p>
+<h3 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h3><p>whereis 命令只能用于程序吗的搜索，而且只搜索二进制文件（参数-b），man说明文件（参数-m）和源代码文件（参数-s），如果省略参数则返回所有信息<br>实例：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ whereis grep</span><br></pre></td></tr></table></figure></p>
+<h3 id="which"><a href="#which" class="headerlink" title="which"></a>which</h3><p>which 敏玲是在PATH变量指定的路径中搜索某个系统命令的位置，摈弃返回第一个搜索结果。也就是说，使用which命令就可以看到某个系统命令是否存在以及执行的到底是哪一个位置的命令<br>实例：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ which grep</span><br></pre></td></tr></table></figure></p>
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>type 命令其实不能算查找命令，他是用来查看某个命令是由shell 自带的还是由shell 外部的独立二进制文件提供的，如果一个命令是外部命令，使用-p参数会显示该命令的路径，相当于which 命令<br>实例：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> <span class="built_in">cd</span></span><br></pre></td></tr></table></figure></p>
+<p>输出cd 是shell 内键<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> grep</span><br></pre></td></tr></table></figure></p>
+<p>输出 grep 是 <code>grep --color=auto</code> 的别名<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">type</span> -p grep</span><br></pre></td></tr></table></figure></p>
+<p>加上-p参数后就相当于which命令</p>
+<p>本文链接: <a href="http://www.36nu.com/post/124.html" target="_blank" rel="external">Linux中查找命令总结</a>，转载请注明。</p>
 
       
     </div>
@@ -279,13 +299,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/08/生成serialVersionUID的方法/">生成serialVersionUID的方法</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/01/Linux中查找命令总结/">Linux中查找命令总结</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jerry.hu 的个人博客">Jerry.hu</a></p>
-        <p><span>发布时间:</span>2016年06月08日 - 13时51分</p>
-        <p><span>最后更新:</span>2016年06月15日 - 15时31分</p>
+        <p><span>发布时间:</span>2016年07月01日 - 15时33分</p>
+        <p><span>最后更新:</span>2016年07月01日 - 15时53分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/08/生成serialVersionUID的方法/" title="生成serialVersionUID的方法">http://xiaoweige.info/2016/06/08/生成serialVersionUID的方法/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaoweige.info/2016/06/08/生成serialVersionUID的方法/　　作者: Jerry.hu" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/01/Linux中查找命令总结/" title="Linux中查找命令总结">http://xiaoweige.info/2016/07/01/Linux中查找命令总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaoweige.info/2016/07/01/Linux中查找命令总结/　　作者: Jerry.hu" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -298,18 +318,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/06/08/Tomcat的JDBC连接池/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Tomcat的JDBC连接池
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/06/08/文件修改提示和自动保存功能/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">文件修改提示和自动保存功能</div>
+    <a href="/2016/06/16/Maven常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Maven常用命令</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -320,7 +331,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-find"><span class="toc-number">1.</span> <span class="toc-text">一 find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#locate"><span class="toc-number">2.</span> <span class="toc-text">locate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#whereis"><span class="toc-number">3.</span> <span class="toc-text">whereis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#which"><span class="toc-number">4.</span> <span class="toc-text">which</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#type"><span class="toc-number">5.</span> <span class="toc-text">type</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -368,7 +379,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/06/08/生成serialVersionUID的方法/" data-title="生成serialVersionUID的方法" data-url="http://xiaoweige.info/2016/06/08/生成serialVersionUID的方法/"></div>
+    <div class="ds-thread" data-thread-key="2016/07/01/Linux中查找命令总结/" data-title="Linux中查找命令总结" data-url="http://xiaoweige.info/2016/07/01/Linux中查找命令总结/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -391,13 +402,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/08/Tomcat的JDBC连接池/" title="上一篇: Tomcat的JDBC连接池">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/06/08/文件修改提示和自动保存功能/" title="下一篇: 文件修改提示和自动保存功能">
+            <a href="/2016/06/16/Maven常用命令/" title="下一篇: Maven常用命令">
                 <i class="fa fa-angle-right"></i>
             </a>
         
