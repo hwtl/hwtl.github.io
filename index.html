@@ -397,7 +397,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p><strong> mvn -h 可以看到很多命令及其用途；</strong><br><strong> -am –also-make 同时构建所列模块的依赖模块; </strong><br><strong> -amd -also-make-dependents 同时构建依赖于所列模块的模块； </strong><br><strong> -pl –projects <arg> 构建制定的模块，模块间用逗号分隔； </strong><br><strong> -rf -resume-from <arg> 从指定的模块恢复反应堆。 </strong></p>
+              <p><strong> mvn -h 可以看到很多命令及其用途；</strong><br><strong> -am –also-make 同时构建所列模块的依赖模块; </strong><br><strong> -amd -also-make-dependents 同时构建依赖于所列模块的模块； </strong><br><strong> -pl –projects <arg> 构建制定的模块，模块间用逗号分隔； </strong><br><strong> -rf -resume-from <arg> 从指定的模块恢复反应堆。 </strong><br><strong> -clean  clean能够保证上一次构建的输出不会影响到本次构建。 </strong><br><strong> -U 该参数能强制让Maven检查所有SNAPSHOT依赖更新，确保集成基于最新的状态，如果没有该参数，Maven默认以天为单位检查更新，而持续集成的频率应该比这高很多。 </strong><br><strong> -e 如果构建出现异常，该参数能让Maven打印完整的stack trace，以方便分析错误原因。 </strong><br><strong> -Dmaven.repo.local 如果持续集成服务器有很多任务，每个任务都会使用本地仓库，下载依赖至本地仓库，为了避免这种多线程使用本地仓库可能会引起的冲突，可以使用-Dmaven.repo.local=/home/juven/ci/foo-repo/这样的参数为每个任务分配本地仓库。</strong><br><strong> -B 该参数表示让Maven使用批处理模式构建项目，能够避免一些需要人工参与交互而造成的挂起状态。 </strong></p>
 <p><Excerpt in index | 首页摘要><br>
           
       

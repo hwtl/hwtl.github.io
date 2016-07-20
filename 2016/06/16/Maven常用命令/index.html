@@ -5,16 +5,16 @@
   
   <title>Maven常用命令 | Jerry&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mvn -h 可以看到很多命令及其用途； -am –also-make 同时构建所列模块的依赖模块;  -amd -also-make-dependents 同时构建依赖于所列模块的模块；  -pl –projects  构建制定的模块，模块间用逗号分隔；  -rf -resume-from  从指定的模块恢复反应堆。">
+  <meta name="description" content="mvn -h 可以看到很多命令及其用途； -am –also-make 同时构建所列模块的依赖模块;  -amd -also-make-dependents 同时构建依赖于所列模块的模块；  -pl –projects  构建制定的模块，模块间用逗号分隔；  -rf -resume-from  从指定的模块恢复反应堆。  -clean  clean能够保证上一次构建的输出不会影响到本次构建。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maven常用命令">
 <meta property="og:url" content="http://xiaoweige.info/2016/06/16/Maven常用命令/index.html">
 <meta property="og:site_name" content="Jerry's blog">
-<meta property="og:description" content="mvn -h 可以看到很多命令及其用途； -am –also-make 同时构建所列模块的依赖模块;  -amd -also-make-dependents 同时构建依赖于所列模块的模块；  -pl –projects  构建制定的模块，模块间用逗号分隔；  -rf -resume-from  从指定的模块恢复反应堆。">
-<meta property="og:updated_time" content="2016-07-01T08:08:08.000Z">
+<meta property="og:description" content="mvn -h 可以看到很多命令及其用途； -am –also-make 同时构建所列模块的依赖模块;  -amd -also-make-dependents 同时构建依赖于所列模块的模块；  -pl –projects  构建制定的模块，模块间用逗号分隔；  -rf -resume-from  从指定的模块恢复反应堆。  -clean  clean能够保证上一次构建的输出不会影响到本次构建。">
+<meta property="og:updated_time" content="2016-07-20T07:45:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven常用命令">
-<meta name="twitter:description" content="mvn -h 可以看到很多命令及其用途； -am –also-make 同时构建所列模块的依赖模块;  -amd -also-make-dependents 同时构建依赖于所列模块的模块；  -pl –projects  构建制定的模块，模块间用逗号分隔；  -rf -resume-from  从指定的模块恢复反应堆。">
+<meta name="twitter:description" content="mvn -h 可以看到很多命令及其用途； -am –also-make 同时构建所列模块的依赖模块;  -amd -also-make-dependents 同时构建依赖于所列模块的模块；  -pl –projects  构建制定的模块，模块间用逗号分隔；  -rf -resume-from  从指定的模块恢复反应堆。  -clean  clean能够保证上一次构建的输出不会影响到本次构建。">
   
     <link rel="alternative" href="/atom.xml" title="Jerry&#39;s blog" type="application/atom+xml">
   
@@ -267,7 +267,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> mvn -h 可以看到很多命令及其用途；</strong><br><strong> -am –also-make 同时构建所列模块的依赖模块; </strong><br><strong> -amd -also-make-dependents 同时构建依赖于所列模块的模块； </strong><br><strong> -pl –projects <arg> 构建制定的模块，模块间用逗号分隔； </arg></strong><br><strong> -rf -resume-from <arg> 从指定的模块恢复反应堆。 </arg></strong></p>
+        <p><strong> mvn -h 可以看到很多命令及其用途；</strong><br><strong> -am –also-make 同时构建所列模块的依赖模块; </strong><br><strong> -amd -also-make-dependents 同时构建依赖于所列模块的模块； </strong><br><strong> -pl –projects <arg> 构建制定的模块，模块间用逗号分隔； </arg></strong><br><strong> -rf -resume-from <arg> 从指定的模块恢复反应堆。 </arg></strong><br><strong> -clean  clean能够保证上一次构建的输出不会影响到本次构建。 </strong><br><strong> -U 该参数能强制让Maven检查所有SNAPSHOT依赖更新，确保集成基于最新的状态，如果没有该参数，Maven默认以天为单位检查更新，而持续集成的频率应该比这高很多。 </strong><br><strong> -e 如果构建出现异常，该参数能让Maven打印完整的stack trace，以方便分析错误原因。 </strong><br><strong> -Dmaven.repo.local 如果持续集成服务器有很多任务，每个任务都会使用本地仓库，下载依赖至本地仓库，为了避免这种多线程使用本地仓库可能会引起的冲突，可以使用-Dmaven.repo.local=/home/juven/ci/foo-repo/这样的参数为每个任务分配本地仓库。</strong><br><strong> -B 该参数表示让Maven使用批处理模式构建项目，能够避免一些需要人工参与交互而造成的挂起状态。 </strong></p>
 <p><excerpt in="" index="" |="" 首页摘要=""><br>    <a id="more"></a></excerpt></p>
 <p><the rest="" of="" contents="" |="" 余下全文=""><br>假设有如下聚合模块：<code>account-aggregator</code> ，其依次包含如下几个模块：<code>account-parent</code>, <code>account-email</code>, <code>account-persist</code>；<br>其中，~email和~persist模块都继承~parent模块。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">module</span>&gt;</span>account-email<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">module</span>&gt;</span>account-persist<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">module</span>&gt;</span>account-parent<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure></the></p>
 <h3 id="例一："><a href="#例一：" class="headerlink" title="例一："></a>例一：</h3><p>当执行<code>mvn clean install</code>后会得到如下几个模块：~aggregator, ~parent, ~email, ~persist。</p>
@@ -292,7 +292,7 @@
         <p><span>本文标题:</span><a href="/2016/06/16/Maven常用命令/">Maven常用命令</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jerry.hu 的个人博客">Jerry.hu</a></p>
         <p><span>发布时间:</span>2016年06月16日 - 15时52分</p>
-        <p><span>最后更新:</span>2016年07月01日 - 16时08分</p>
+        <p><span>最后更新:</span>2016年07月20日 - 15时45分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/06/16/Maven常用命令/" title="Maven常用命令">http://xiaoweige.info/2016/06/16/Maven常用命令/</a>
             <span class="copy-path" data-clipboard-text="原文: http://xiaoweige.info/2016/06/16/Maven常用命令/　　作者: Jerry.hu" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
