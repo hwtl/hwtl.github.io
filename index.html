@@ -145,7 +145,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/IntelliJ-IDEA/" style="font-size: 20px;">IntelliJ IDEA</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Maven/" style="font-size: 15px;">Maven</a> <a href="/tags/Tomcat-JDBC/" style="font-size: 10px;">Tomcat JDBC</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a>
+                        <a href="/tags/IntelliJ-IDEA/" style="font-size: 20px;">IntelliJ IDEA</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Maven/" style="font-size: 15px;">Maven</a> <a href="/tags/Tomcat-JDBC/" style="font-size: 10px;">Tomcat JDBC</a> <a href="/tags/转载/" style="font-size: 10px;">转载</a>
                     </div>
                 </section>
                 
@@ -228,6 +228,69 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Linux下rz-使方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/19/Linux下rz-使方法/" class="article-date">
+      <time datetime="2016-09-19T06:39:31.000Z" itemprop="datePublished">2016-09-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/19/Linux下rz-使方法/">Linux下rz/使方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>软件安装<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ cd /tmp</span><br><span class="line">$ wget http:<span class="comment">//www.ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz</span></span><br><span class="line">$ tar zxvf lrzsz-<span class="number">0.12</span>.20.tar.gz &amp;&amp; cd lrzsz-<span class="number">0.12</span>.20</span><br><span class="line">$ ./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>上面安装过程默认把lsz和lrz安装到了/usr/local/bin/目录下, 下面创建软链接, 并命名为rz/sz:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ cd /usr/bin</span><br><span class="line">$ ln -s /usr/local/bin/lrz rz</span><br><span class="line">$ ln -s /usr/local/bin/lsz sz</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>ps:安装中出现的问题可以参考 <a href="/2016/07/07/Linux-常见问题/">Linux 常见问题</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Linux-常见问题" class="article article-type-post" itemscope itemprop="blogPost">
   
