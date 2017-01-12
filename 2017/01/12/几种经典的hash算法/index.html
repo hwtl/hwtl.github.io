@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>几种经典的hash算法 | Jerry&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="计算理论中，没有Hash函数的说法，只有单向函数的说法。所谓的单向函数，是一个复杂的定义，大家可以去看计算理论或者密码学方面的数据。用“人 类”的语言描述单向函数就是：如果某个函数在给定输入的时候，很容易计算出其结果来；而当给定结果的时候，很难计算出输入来，这就是单项函数。各种加密函 数都可以被认为是单向函数的逼近。Hash函数（或者成为散列函数）也可以看成是单向函数的一个逼近。即它接近于满足单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几种经典的hash算法">
+<meta property="og:url" content="http://xiaoweige.info/2017/01/12/几种经典的hash算法/index.html">
+<meta property="og:site_name" content="Jerry's blog">
+<meta property="og:description" content="计算理论中，没有Hash函数的说法，只有单向函数的说法。所谓的单向函数，是一个复杂的定义，大家可以去看计算理论或者密码学方面的数据。用“人 类”的语言描述单向函数就是：如果某个函数在给定输入的时候，很容易计算出其结果来；而当给定结果的时候，很难计算出输入来，这就是单项函数。各种加密函 数都可以被认为是单向函数的逼近。Hash函数（或者成为散列函数）也可以看成是单向函数的一个逼近。即它接近于满足单">
+<meta property="og:updated_time" content="2017-01-12T08:56:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="几种经典的hash算法">
+<meta name="twitter:description" content="计算理论中，没有Hash函数的说法，只有单向函数的说法。所谓的单向函数，是一个复杂的定义，大家可以去看计算理论或者密码学方面的数据。用“人 类”的语言描述单向函数就是：如果某个函数在给定输入的时候，很容易计算出其结果来；而当给定结果的时候，很难计算出输入来，这就是单项函数。各种加密函 数都可以被认为是单向函数的逼近。Hash函数（或者成为散列函数）也可以看成是单向函数的一个逼近。即它接近于满足单">
+  
+    <link rel="alternative" href="/atom.xml" title="Jerry&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpeg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">Jerry.hu</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">学会沉淀，总会有所收获！</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/home">博客首页</a></li>
+                        
+                            <li><a href="/">列表</a></li>
+                        
+                            <li><a href="/about">关于</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/hwtl" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/Jerry.hu" title="zhihu">zhihu</a>
+                            
+                                <a class="fl oschina" target="_blank" href="http://my.oschina.net/jerryhu" title="oschina">oschina</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/IntelliJ-IDEA/" style="font-size: 20px;">IntelliJ IDEA</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Maven/" style="font-size: 15px;">Maven</a> <a href="/tags/Tomcat-JDBC/" style="font-size: 10px;">Tomcat JDBC</a> <a href="/tags/hash-算法/" style="font-size: 10px;">hash 算法</a> <a href="/tags/转载/" style="font-size: 15px;">转载</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://spring.io">Spring</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#what-is-thymeleaf">Thymeleaf</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.oschina.net">OSC</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://liuxing.info">Liuxing</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ruanyifeng.com">阮一峰</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱徒步、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Jerry.hu</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpeg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Jerry.hu</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">学会沉淀，总会有所收获！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/home">博客首页</a></li>
+                
+                    <li><a href="/">列表</a></li>
+                
+                    <li><a href="/about">关于</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/hwtl" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/Jerry.hu" title="zhihu">zhihu</a>
+                    
+                        <a class="oschina" target="_blank" href="http://my.oschina.net/jerryhu" title="oschina">oschina</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="[layout]-几种经典的hash算法" class="article article-type-[layout]" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/12/几种经典的hash算法/" class="article-date">
+      <time datetime="2017-01-12T06:51:41.000Z" itemprop="datePublished">2017-01-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      几种经典的hash算法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash-算法/">hash 算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p> 计算理论中，没有Hash函数的说法，只有单向函数的说法。所谓的单向函数，是一个复杂的定义，大家可以去看计算理论或者密码学方面的数据。用“人 类”的语言描述单向函数就是：如果某个函数在给定输入的时候，很容易计算出其结果来；而当给定结果的时候，很难计算出输入来，这就是单项函数。各种加密函 数都可以被认为是单向函数的逼近。Hash函数（或者成为散列函数）也可以看成是单向函数的一个逼近。即它接近于满足单向函数的定义。</p>
+<p><excerpt in="" index="" |="" 首页摘要=""><br>    <a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""><br>Hash函数还有另外的含义。实际中的Hash函数是指把一个大范围映射到一个小范围。把大范围映射到一个小范围的目的往往是为了节省空间，使得数据容易保存。除此以外，Hash函数往往应用于查找上。所以，在考虑使用Hash函数之前，需要明白它的几个限制：<br>1、Hash 的主要原理就是把大范围映射到小范围；所以，你输入的实际值得个数必须和小范围相当或者比它更小。不然冲突就会很多。<br>2、由于Hash 逼近单向函数；所以，你可以用它来对数据进行加密。<br>3、不同的应用对Hash 函数有着不同的要求；比如，用于加密的Hash函数主要考虑它和单项函数的差距，而用于查找的Hash 函数主要考虑它映射到小范围的冲突率。</the></p>
+<p>Hash 函数应用的主要对象是数组（比如：字符串），而其目标一般是一个int 类型。以下我们都按照这种方式来说明。<br>一般来说，Hash 函数可以简单的划分为如下几类：</p>
+<blockquote>
+<p><strong>1、加法Hash；</strong><br>   <strong>2、位运算Hash；</strong><br>   <strong>3、乘法Hash； </strong><br>   <strong>4、除法Hash； </strong><br>   <strong>5、查表Hash； </strong><br>   <strong>6、混合Hash； </strong><br>下面详细的介绍以上各种方式在实际中的运用。</p>
+</blockquote>
+<h4 id="加法Hash"><a href="#加法Hash" class="headerlink" title="加法Hash"></a>加法Hash</h4><p> 所谓的加法Hash 就是把输入的元素一个一个的加起来构成最后的结果，标准的加法Hash的构造如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">additiveHash</span><span class="params">(String key,<span class="keyword">int</span> prime)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hash,i;</span><br><span class="line">    <span class="keyword">for</span>(hash = key.length(),i = <span class="number">0</span>; i &lt; key.length();i++)&#123;</span><br><span class="line">        hash += key.charAt(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  (hash % prime);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>这里的prime 是任意的质数，看得出，结果的值域为[0,prime - 1 ].</p>
+<h4 id="位运算Hash"><a href="#位运算Hash" class="headerlink" title="位运算Hash"></a>位运算Hash</h4><p> 这类型Hash函数通过利用各种运算(常见的是位移和异或) 来充分的混合输入元素。比如标准的旋转Hash的构造如下：<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">rotatingHash</span><span class="params">(String key,<span class="keyword">int</span> prime)</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> hash,i;</span><br><span class="line">   <span class="keyword">for</span>(hash = key.length(),i=<span class="number">0</span>;i&lt;key.length();i++)&#123;</span><br><span class="line">       hash = (hash &lt;&lt; <span class="number">4</span>)^(hash &gt;&gt; <span class="number">28</span>)^key.charAt(i);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> (hash % prime);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure><br>先移位，然后再进行各种位运算是这种类型Hash 函数的主要特点。比如，以上的那段计算hash 的代码还可以有如下的集中变形：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash = (hash&lt;&lt;<span class="number">5</span>)^(hash&gt;&gt;<span class="number">27</span>)^key.charAt(i);</span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hash += key.charAt(i);</span><br><span class="line">   hash += (hash &lt;&lt; <span class="number">10</span>);</span><br><span class="line">   hash ^= (hash &gt;&gt; <span class="number">6</span>);</span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((i&amp;<span class="number">1</span>) == <span class="number">0</span>)&#123;</span><br><span class="line">    hash ^= (hash&lt;&lt;<span class="number">7</span>) ^ key.charAt(i) ^ (hash&gt;&gt;<span class="number">3</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    hash ^= ~((hash&lt;&lt;<span class="number">11</span>) ^ key.charAt(i) ^ (hash &gt;&gt;<span class="number">5</span>));</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash += (hash&lt;&lt;<span class="number">5</span>) + key.charAt(i);</span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash = key.charAt(i) + (hash&lt;&lt;<span class="number">6</span>) + (hash&gt;&gt;<span class="number">16</span>) – hash;</span><br></pre></td></tr></table></figure><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash ^= ((hash&lt;&lt;<span class="number">5</span>) + key.charAt(i) + (hash&gt;&gt;<span class="number">2</span>));</span><br></pre></td></tr></table></figure></p>
+<h4 id="乘法Hash"><a href="#乘法Hash" class="headerlink" title="乘法Hash"></a>乘法Hash</h4><p> 这种类型的Hash 函数利用了乘法的不相关性(乘法的这种性质，最有名的莫过于平方取头尾的随机数生成算法，虽然这种算法效果并不好)比如：<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bernstein</span><span class="params">(String key)</span></span>&#123;</span><br><span class="line">     <span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ;i&lt;key.length();i++)&#123;</span><br><span class="line">         hash = <span class="number">33</span> * hash+key.charAt(i);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> hash;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure><br> 在JDK5.0里面的String 类的hashCode() 方法也使用过乘法Hash，不过它使用的乘数是<code>31</code>。推荐的乘数还有 <code>131</code>，<code>13123</code>，<code>13131</code>，<code>131313</code><br> 使用这种方式的著名Hash 函数还有：<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//32 位FNV算法</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> OFFSET_BASIS = <span class="number">2166136261L</span>;<span class="comment">// 32位offset basis</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> PRIME = <span class="number">16777619</span>; <span class="comment">// 32位prime</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">long</span> <span class="title">FNVHash</span><span class="params">(<span class="keyword">byte</span> [] data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> hash = OFFSET_BASIS;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">byte</span> b : data) &#123;</span><br><span class="line">            hash ^= b;</span><br><span class="line">            hash *= PRIME;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> hash;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure><br> 以及改良后的版本：<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">FNVHash1</span><span class="params">(String data)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> p = <span class="number">16777619</span>;</span><br><span class="line">        <span class="keyword">int</span> hash = (<span class="keyword">int</span>)<span class="number">2166136261L</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;data.length();i++)</span><br><span class="line">            hash = (hash ^ data.charAt(i)) * p;</span><br><span class="line">        hash += hash &lt;&lt; <span class="number">13</span>;</span><br><span class="line">        hash ^= hash &gt;&gt; <span class="number">7</span>;</span><br><span class="line">        hash += hash &lt;&lt; <span class="number">3</span>;</span><br><span class="line">        hash ^= hash &gt;&gt; <span class="number">17</span>;</span><br><span class="line">        hash += hash &lt;&lt; <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">return</span> hash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>除了乘以一个固定的数，常见的还有乘以一个不断改变的数，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        <span class="keyword">int</span> b    = <span class="number">378551</span>;</span><br><span class="line">        <span class="keyword">int</span> a    = <span class="number">63689</span>;</span><br><span class="line">        <span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)</span><br><span class="line">       &#123;</span><br><span class="line">          hash = hash * a + str.charAt(i);</span><br><span class="line">          a    = a * b;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> (hash &amp; <span class="number">0x7FFFFFFF</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>虽然Adler32算法的应用没有CRC32广泛，不过，它可能是乘法Hash里面最有名的一个了。关于它的介绍，大家可以去看RFC 1950规范。</p>
+<h4 id="除法Hash"><a href="#除法Hash" class="headerlink" title="除法Hash"></a>除法Hash</h4><p>除法和乘法一样，同样具有表面上看起来的不相关性。不过，因为除法太慢，这种方式几乎找不到真正的应用。需要注意的是，我们在前面看到的hash的 结果除以一个prime的目的只是为了保证结果的范围。<br>如果你不需要它限制一个范围的话，可以使用如下的代码替代<code>hash%prime</code>：<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hash = hash ^ (hash&gt;&gt;<span class="number">10</span>) ^ (hash&gt;&gt;<span class="number">20</span>)。</span><br><span class="line"> </span><br></pre></td></tr></table></figure></p>
+<h4 id="查表Hash"><a href="#查表Hash" class="headerlink" title="查表Hash"></a>查表Hash</h4><p>查表Hash最有名的例子莫过于CRC系列算法。虽然CRC系列算法本身并不是查表，但是，查表是它的一种最快的实现方式。<br>查表Hash中有名的例子有：<code>Universal Hashing</code>和<code>Zobrist Hashing</code>。他们的表格都是随机生成的。</p>
+<h4 id="混合Hash"><a href="#混合Hash" class="headerlink" title="混合Hash"></a>混合Hash</h4><p> 混合Hash算法利用了以上各种方式。各种常见的Hash算法，比如MD5、Tiger都属于这个范围。它们一般很少在面向查找的Hash函数里面使用。</p>
+<h4 id="对Hash算法的评价"><a href="#对Hash算法的评价" class="headerlink" title="对Hash算法的评价"></a>对Hash算法的评价</h4><pre><code> 我们对Hash函数的建议如下：
+
+1. 字符串的Hash。最简单可以使用基本的乘法Hash，当乘数为33时，对于英文单词有很好的散列效果（小于6个的小写形式可以保证没有冲突）。复杂一点可以使用FNV算法（及其改进形式），它对于比较长的字符串，在速度和效果上都不错。
+
+注：虽说以上的hash能极大程度地避免冲突，但是冲突是在所难免的。所以无论用哪种hash函数，都要加上处理冲突的方法。
+</code></pre><p>本文链接: <a href="http://zhaohaolin.iteye.com/blog/1874420" target="_blank" rel="external">几种经典的hash算法</a>，转载请注明。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/12/几种经典的hash算法/">几种经典的hash算法</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Jerry.hu 的个人博客">Jerry.hu</a></p>
+        <p><span>发布时间:</span>2017年01月12日 - 14时51分</p>
+        <p><span>最后更新:</span>2017年01月12日 - 16时56分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/12/几种经典的hash算法/" title="几种经典的hash算法">http://xiaoweige.info/2017/01/12/几种经典的hash算法/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaoweige.info/2017/01/12/几种经典的hash算法/　　作者: Jerry.hu" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/19/Linux下rz-使方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux下rz/使方法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#加法Hash"><span class="toc-number">1.</span> <span class="toc-text">加法Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位运算Hash"><span class="toc-number">2.</span> <span class="toc-text">位运算Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乘法Hash"><span class="toc-number">3.</span> <span class="toc-text">乘法Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#除法Hash"><span class="toc-number">4.</span> <span class="toc-text">除法Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查表Hash"><span class="toc-number">5.</span> <span class="toc-text">查表Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#混合Hash"><span class="toc-number">6.</span> <span class="toc-text">混合Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对Hash算法的评价"><span class="toc-number">7.</span> <span class="toc-text">对Hash算法的评价</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/01/12/几种经典的hash算法/" data-title="几种经典的hash算法" data-url="http://xiaoweige.info/2017/01/12/几种经典的hash算法/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/09/19/Linux下rz-使方法/" title="下一篇: Linux下rz/使方法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/几种经典的hash算法/">几种经典的hash算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/19/Linux下rz-使方法/">Linux下rz/使方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/07/Linux-常见问题/">Linux 常见问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/01/Linux中查找命令总结/">Linux中查找命令总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/16/Maven常用命令/">Maven常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/16/配置详解/">Maven pom.xml 配置详解配置详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Tomcat的JDBC连接池/">Tomcat的JDBC连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/生成serialVersionUID的方法/">生成serialVersionUID的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/文件修改提示和自动保存功能/">文件修改提示和自动保存功能</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Jerry.hu
+            </div>
+            <!--<div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>-->
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
+</body>
+</html>
