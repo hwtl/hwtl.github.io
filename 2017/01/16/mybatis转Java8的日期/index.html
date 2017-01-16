@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Linux下rz/使方法 | Jerry&#39;s blog</title>
+  <title>mybatis转Java8的日期 | Jerry&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="软件安装123456$ cd /tmp$ wget http://www.ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz$ tar zxvf lrzsz-0.12.20.tar.gz &amp;amp;&amp;amp; cd lrzsz-0.12.20$ ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install上面安装过程默认把l">
+  <meta name="description" content="在以前我们通常会用 java.sql.Date、java.sql.Timestamp java.util.Date来映射到数据库的date、timestamp、datetime等字段但是，java.sql.Date、java.sql.Timestamp、java.util.Date这些类都不好用，很多方法都过时了。Java8里面新出来了一些API，LocalDate、LocalTime、Local">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux下rz/使方法">
-<meta property="og:url" content="http://xiaoweige.info/2016/09/19/Linux下rz-使方法/index.html">
+<meta property="og:title" content="mybatis转Java8的日期">
+<meta property="og:url" content="http://xiaoweige.info/2017/01/16/mybatis转Java8的日期/index.html">
 <meta property="og:site_name" content="Jerry's blog">
-<meta property="og:description" content="软件安装123456$ cd /tmp$ wget http://www.ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz$ tar zxvf lrzsz-0.12.20.tar.gz &amp;amp;&amp;amp; cd lrzsz-0.12.20$ ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install上面安装过程默认把l">
-<meta property="og:updated_time" content="2016-09-19T07:00:12.000Z">
+<meta property="og:description" content="在以前我们通常会用 java.sql.Date、java.sql.Timestamp java.util.Date来映射到数据库的date、timestamp、datetime等字段但是，java.sql.Date、java.sql.Timestamp、java.util.Date这些类都不好用，很多方法都过时了。Java8里面新出来了一些API，LocalDate、LocalTime、Local">
+<meta property="og:image" content="http://xiaoweige.info/2017/01/16/mybatis转Java8的日期/a.png">
+<meta property="og:image" content="http://xiaoweige.info/2017/01/16/mybatis转Java8的日期/b.png">
+<meta property="og:updated_time" content="2017-01-16T07:48:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux下rz/使方法">
-<meta name="twitter:description" content="软件安装123456$ cd /tmp$ wget http://www.ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz$ tar zxvf lrzsz-0.12.20.tar.gz &amp;amp;&amp;amp; cd lrzsz-0.12.20$ ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install上面安装过程默认把l">
+<meta name="twitter:title" content="mybatis转Java8的日期">
+<meta name="twitter:description" content="在以前我们通常会用 java.sql.Date、java.sql.Timestamp java.util.Date来映射到数据库的date、timestamp、datetime等字段但是，java.sql.Date、java.sql.Timestamp、java.util.Date这些类都不好用，很多方法都过时了。Java8里面新出来了一些API，LocalDate、LocalTime、Local">
+<meta name="twitter:image" content="http://xiaoweige.info/2017/01/16/mybatis转Java8的日期/a.png">
   
     <link rel="alternative" href="/atom.xml" title="Jerry&#39;s blog" type="application/atom+xml">
   
@@ -225,11 +228,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Linux下rz-使方法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="[layout]-mybatis转Java8的日期" class="article article-type-[layout]" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/19/Linux下rz-使方法/" class="article-date">
-      <time datetime="2016-09-19T06:39:31.000Z" itemprop="datePublished">2016-09-19</time>
+      <a href="/2017/01/16/mybatis转Java8的日期/" class="article-date">
+      <time datetime="2017-01-16T07:32:01.000Z" itemprop="datePublished">2017-01-16</time>
 </a>
     </div>
   
@@ -242,7 +245,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Linux下rz/使方法
+      mybatis转Java8的日期
     </h1>
   
 
@@ -251,13 +254,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis-config/">Mybatis config</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -267,8 +270,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>软件安装<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ cd /tmp</span><br><span class="line">$ wget http:<span class="comment">//www.ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz</span></span><br><span class="line">$ tar zxvf lrzsz-<span class="number">0.12</span>.20.tar.gz &amp;&amp; cd lrzsz-<span class="number">0.12</span>.20</span><br><span class="line">$ ./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>上面安装过程默认把lsz和lrz安装到了/usr/local/bin/目录下, 下面创建软链接, 并命名为rz/sz:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ cd /usr/bin</span><br><span class="line">$ ln -s /usr/local/bin/lrz rz</span><br><span class="line">$ ln -s /usr/local/bin/lsz sz</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>ps:安装中出现的问题可以参考 <a href="/2016/07/07/Linux-常见问题/">Linux 常见问题</a></p>
+        <p>在以前我们通常会用 <code>java.sql.Date</code>、<code>java.sql.Timestamp</code> <code>java.util.Date</code>来映射到数据库的<code>date</code>、<code>timestamp</code>、<code>datetime</code>等字段<br>但是，<code>java.sql.Date</code>、<code>java.sql.Timestamp</code>、<code>java.util.Date</code>这些类都不好用，很多方法都过时了。<br>Java8里面新出来了一些API，<code>LocalDate</code>、<code>LocalTime</code>、<code>LocalDateTime</code> 非常好用。</p>
+<p><excerpt in="" index="" |="" 首页摘要=""><br>    <a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""><br>但是在常规的使用情况下我们通过 mybatis 的xml 返回到实体bean 中 这些字段的值通常是不会被映射到的<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HouseContact</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">2279336280274265600L</span>;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 自增主键id</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 创建时间</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime createTime;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 创建人</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> creator;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 获取 自增主键id</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getId</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 设置 自增主键id</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span> <span class="params">(<span class="keyword">long</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 获取 创建时间</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LocalDateTime <span class="title">getCreateTime</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 设置 创建时间</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCreateTime</span> <span class="params">(LocalDateTime createTime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.createTime = createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 获取 创建人</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCreator</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.creator;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 设置 创建人</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCreator</span> <span class="params">(<span class="keyword">int</span> creator)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.creator = creator;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> StringBuffer sb = <span class="keyword">new</span> StringBuffer(<span class="string">"HouseContact&#123;"</span>);</span><br><span class="line">        sb.append(<span class="string">"id="</span>).append(id);</span><br><span class="line">        sb.append(<span class="string">", createTime="</span>).append(createTime);</span><br><span class="line">        sb.append(<span class="string">", creator="</span>).append(creator);</span><br><span class="line">        sb.append(<span class="string">'&#125;'</span>);</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></the></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id="queryBeanById" resultType="houseContact"&gt;</span><br><span class="line">        select id,createTime,creator from t_entity_house_contact with(nolock)</span><br><span class="line">        WHERE id = #&#123;id&#125; and status = 0</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p>如下图：<br><img src="/2017/01/16/mybatis转Java8的日期/a.png" alt="a.png" title=""><br>经过查证发现解决这个问题很简单只需要导入下面的jar 包<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-typehandlers-jsr310<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><br><img src="/2017/01/16/mybatis转Java8的日期/b.png" alt="b.png" title=""><br>不过使用这个有些时候并不能解决问题，还有一个前提就是你的mybatis 的jar 包版本 要大于 <code>3.4.0</code><br>如果jar包版本小于 <code>3.4.0</code>切不想升级来解决的话也没问题只需要在mybatis-config.xml 中配置如下代码即可<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeHandlers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeHandler</span> <span class="attr">handler</span>=<span class="string">"org.apache.ibatis.type.InstantTypeHandler"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeHandler</span> <span class="attr">handler</span>=<span class="string">"org.apache.ibatis.type.LocalDateTimeTypeHandler"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeHandler</span> <span class="attr">handler</span>=<span class="string">"org.apache.ibatis.type.LocalDateTypeHandler"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeHandler</span> <span class="attr">handler</span>=<span class="string">"org.apache.ibatis.type.LocalTimeTypeHandler"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeHandler</span> <span class="attr">handler</span>=<span class="string">"org.apache.ibatis.type.OffsetDateTimeTypeHandler"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeHandler</span> <span class="attr">handler</span>=<span class="string">"org.apache.ibatis.type.OffsetTimeTypeHandler"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeHandler</span> <span class="attr">handler</span>=<span class="string">"org.apache.ibatis.type.ZonedDateTimeTypeHandler"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeHandlers</span>&gt;</span></span><br></pre></td></tr></table></figure><br>好了，到此结束大伙赶紧去体验编码的乐趣吧！！！！！</p>
 
       
     </div>
@@ -277,13 +283,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/19/Linux下rz-使方法/">Linux下rz/使方法</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/16/mybatis转Java8的日期/">mybatis转Java8的日期</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jerry.hu 的个人博客">Jerry.hu</a></p>
-        <p><span>发布时间:</span>2016年09月19日 - 14时39分</p>
-        <p><span>最后更新:</span>2016年09月19日 - 15时00分</p>
+        <p><span>发布时间:</span>2017年01月16日 - 15时32分</p>
+        <p><span>最后更新:</span>2017年01月16日 - 15时48分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/19/Linux下rz-使方法/" title="Linux下rz/使方法">http://xiaoweige.info/2016/09/19/Linux下rz-使方法/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaoweige.info/2016/09/19/Linux下rz-使方法/　　作者: Jerry.hu" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/16/mybatis转Java8的日期/" title="mybatis转Java8的日期">http://xiaoweige.info/2017/01/16/mybatis转Java8的日期/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaoweige.info/2017/01/16/mybatis转Java8的日期/　　作者: Jerry.hu" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -296,18 +302,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/01/12/几种经典的hash算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          几种经典的hash算法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/07/07/Linux-常见问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux 常见问题</div>
+    <a href="/2017/01/12/几种经典的hash算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">几种经典的hash算法</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -366,7 +363,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/09/19/Linux下rz-使方法/" data-title="Linux下rz/使方法" data-url="http://xiaoweige.info/2016/09/19/Linux下rz-使方法/"></div>
+    <div class="ds-thread" data-thread-key="2017/01/16/mybatis转Java8的日期/" data-title="mybatis转Java8的日期" data-url="http://xiaoweige.info/2017/01/16/mybatis转Java8的日期/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -389,13 +386,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/12/几种经典的hash算法/" title="上一篇: 几种经典的hash算法">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/07/07/Linux-常见问题/" title="下一篇: Linux 常见问题">
+            <a href="/2017/01/12/几种经典的hash算法/" title="下一篇: 几种经典的hash算法">
                 <i class="fa fa-angle-right"></i>
             </a>
         
